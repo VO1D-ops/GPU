@@ -1,0 +1,44 @@
+{% extends "main/base.html" %}
+{% block content %}
+<div class="cart">
+    <div class="container">
+        <div class="row">
+            <div >
+                <h3 class="text-center">ORDER HISTORY</h3>
+                {% if cart_items %}
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Ordered</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Total Pieces</th>
+                            <th scope="col">Order Status</th>
+                            <th scope="col">Delivery Date</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            {% for cart in cart_items %}
+                        <tr>
+                            <td>{{ cart.ordered_date }}</td>
+                            <td>{{ cart.item.title }} <span class="badge badge-{{ cart.item.label_colour }}">{{ cart.item.labels }}</span></td>
+                            <td>{{ cart.item.description }}</td>
+                            <td>{{ cart.item.price }}</td>
+                            <td>{{ cart.item.pieces }} pieces</td>
+                            <td>{{ cart.status }}</td>
+                            <td>{{ cart.delivery_date }}</td>
+                        </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% else %}
+                <h4 class="text-center">YOU HAVE NOT ORDERED ANY ITEMS YET!!!</h4>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
