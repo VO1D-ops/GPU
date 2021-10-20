@@ -1,1 +1,1 @@
-web: gunicorn gpu-project.wsgi
+web: gunicorn GPU.wsgi
